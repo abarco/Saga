@@ -1,19 +1,33 @@
 "use strict";
 
-var express = require('express');
-var router = express.Router();
-var _ = require('underscore');
 var logger = require('winston');
 var reddit = require('../lib/reddit');
 
-/* GET home page. */
-router.get('/', function(req, res) {
-    logger.info('Index GET has been summoned');
-    reddit.readFrontPage()
-        .then(function (response) {
-            var content = response.data.after;
-            res.render('index', { title: 'Express', data: content });
-        });
-});
+var routeRegister = function (app) {
+    logger.info('Registering Routes...');
 
-module.exports = router;
+    app.get('/api/getFrontPage', function (req, res) {
+        logger.info('Getting Front page information');
+        reddit.readFrontPage()
+            .then(function (response) {
+                var r = response.data;
+                res.json(r);
+            });
+    });
+
+    app.get('/', function (req, res) {
+        logger.info('Rendering Index...');
+
+        res.sendFile('./public/index.html');
+    });
+
+    app.get('*', function (req, res) {
+        logger.info('Unknown Route....');
+        res.status(404);
+        res.json({error: 'no such route'});
+    });
+
+    logger.info('Registering Routes done!');
+};
+
+module.exports = routeRegister;
