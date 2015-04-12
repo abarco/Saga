@@ -24,7 +24,7 @@ var routeRegister = function (app) {
     app.get('*', function (req, res) {
         logger.info('Unknown Route....');
         res.status(404);
-        res.json({error: 'no such route'});
+        res.send('Resource Not Found');
     });
 
     logger.info('Registering Routes done!');
