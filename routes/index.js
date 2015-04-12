@@ -11,7 +11,7 @@ router.get('/', function(req, res) {
     logger.info('Index GET has been summoned');
     reddit.readFrontPage()
         .then(function (response) {
-            var content = response.data.children;
+            var content = response.data.after;
             res.render('index', { title: 'Express', data: content });
         });
 });

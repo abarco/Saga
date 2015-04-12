@@ -11,8 +11,12 @@
     "express": "^4.12.3",
     "jade": "*",
     "morgan": "^1.5.2",
+    "nconf": "^0.6.9",
+    "nib": "^1.0.3",
     "q-io": "^1.12.0",
     "serve-favicon": "^2.2.0",
+    "stylus": "^0.48.1",
+    "ua-parser": "^0.3.3",
     "underscore": "^1.8.3",
     "winston": "^0.9.0"
   }
