@@ -6,7 +6,7 @@ var reddit = require('../lib/reddit');
 var routeRegister = function (app) {
     logger.info('Registering Routes...');
 
-    app.get('/api/getFrontPage', function (req, res) {
+    app.get('/api/reddit', function (req, res) {
         logger.info('Getting Front page information');
         reddit.readFrontPage()
             .then(function (response) {
