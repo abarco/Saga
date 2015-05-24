@@ -10,8 +10,7 @@ var routeRegister = function (app) {
         logger.info('Getting Front page information');
         reddit.readFrontPage()
             .then(function (response) {
-                var r = response.data;
-                res.json(r);
+                res.json(response);
             });
     });
 
