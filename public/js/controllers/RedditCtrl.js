@@ -2,7 +2,7 @@ angular.module('RedditCtrl', ['RedditService']).controller('RedditController', f
 
     Reddit.get()
         .then(function (result) {
-            $scope.tagline = result;
+            $scope.listings = result.children;
         });
 
 

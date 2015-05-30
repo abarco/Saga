@@ -1,5 +1,8 @@
 <div class="jumbotron text-center">
-    <h1>Testing Backend</h1>
+    <h1>Reddit Front Page</h1>
 
-    <p>{{ tagline }}</p>
+    <li ng-repeat="listing in listings">
+        <img ng-src="{{listing.content_link}}"/>
+        <a href="{{listing.comments_link}}">{{listing.title}}</a>
+    </li>
 </div>

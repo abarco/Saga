@@ -1,14 +1,22 @@
-angular.module('RedditService', []).factory('Reddit', ['$http', function($http) {
+angular.module('RedditService', []).factory('Reddit', ['$http', '$q', function ($http, $q) {
 
     return {
-        // call to get all nerds
-        get : function() {
-            return $http.get('/api/reddit')
-                .then(function (response) {
-                    if(response.status === 200) {
-                        return response.data;
-                    }
-                });
+
+        get: function () {
+            var self = this;
+            if (self.data) {
+                return $q.when(this.data);
+            }
+            else {
+                return $http.get('/api/reddit')
+                    .then(function (response) {
+                        if (response.status === 200) {
+                            self.data = response.data;
+                            return self.data;
+                        }
+                    });
+            }
+
         }
     }
 
