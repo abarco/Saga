@@ -1,8 +1,8 @@
 <div class="jumbotron text-center">
     <h1>Reddit Front Page</h1>
 
-    <li ng-repeat="listing in listings">
-        <img ng-src="{{listing.content_link}}"/>
-        <a href="{{listing.comments_link}}">{{listing.title}}</a>
+    <li ng-repeat="listing in listings" class="listings">
+        <img ng-src="{{listing.thumbnail}}" width="50"/>
+        <a href="{{listing.content_link}}">{{listing.title}}</a>
     </li>
 </div>
